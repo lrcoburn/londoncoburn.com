@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>London Coburn — Web Design</title>
-  <meta name="description" content="London Coburn — student web developer building simple, fast websites for students and small projects." />
+  <title>London Coburn — Gallery & Design</title>
+  <meta name="description" content="London Coburn — curated web design with a gallery aesthetic and refined typographic system." />
   <link rel="stylesheet" href="/styles/styles.css">
 </head>
 <body>
   <header class="site-header">
     <div class="container nav-row">
       <div class="brand">London Coburn</div>
-      <nav class="nav">
+      <nav class="nav" aria-label="Primary">
         <a href="#projects">Work</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
@@ -23,53 +23,71 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy">
-          <h1>Hi — I’m London.</h1>
-          <p class="lead">I build fast, friendly websites for students and small local projects. I focus on clarity, accessibility, and performance.</p>
+          <h1 class="display">A curated web presence with a gallery sensibility</h1>
+          <p class="lead">I design refined, fast websites inspired by fine‑art galleries and equestrian portraiture — warm obsidian backgrounds, hand‑set serif headings, and muted antique gold accents.</p>
           <div class="actions">
-            <a class="btn-primary" href="#projects">See my work</a>
-            <a class="btn-ghost" href="#contact">Get a quote</a>
+            <a class="btn-primary" href="#projects">View the collection</a>
+            <a class="btn-ghost" href="#contact">Commission a site</a>
           </div>
-          <p class="muted">Student-friendly packages: Landing page · Portfolio · Small e-commerce demo</p>
+          <p class="muted">Commission packages available — starting at <strong>$500</strong> for a limited luxury artwork showcase template.</p>
         </div>
 
-        <div class="hero-card" aria-hidden="true">
-          <div class="mock">
-            <div class="mock-figure">E‑commerce demo</div>
+        <aside class="hero-artwork" aria-labelledby="featured-artwork">
+          <div class="artwork-card">
+            <div class="artwork-frame">
+              <img src="/images/placeholder-art.jpg" alt="Framed gallery artwork" class="artwork-img" />
+            </div>
+            <div class="artwork-meta">
+              <div class="artwork-title">Equine Portrait — Limited Edition</div>
+              <div class="artwork-price">$500</div>
+            </div>
           </div>
-        </div>
+        </aside>
       </div>
     </section>
 
     <section id="projects" class="container section">
-      <h2>Projects</h2>
-      <p class="muted">Examples and case studies coming soon. For now, here are a few demo screenshots and short descriptions.</p>
+      <h2>Selected Work</h2>
+      <p class="muted">A small selection of demo templates and gallery pieces designed with a luxury-first approach.</p>
 
-      <div class="cards">
-        <article class="card">
-          <h3>College portfolio template</h3>
-          <p class="muted">A one-page portfolio template for college applications — photo, achievements, and contact.</p>
+      <div class="cards gallery">
+        <article class="card artwork">
+          <div class="artwork-frame small">
+            <img src="/images/placeholder-art-1.jpg" alt="Artwork 1" class="artwork-img" />
+          </div>
+          <h3>Portfolio Gallery Template</h3>
+          <p class="muted">A single-page showcase inspired by museum layouts — clean hierarchy and tactile type.</p>
+          <div class="card-cta">From <strong>$500</strong></div>
         </article>
 
-        <article class="card">
-          <h3>Small shop demo</h3>
-          <p class="muted">Product pages + simple checkout demo to show e-commerce capability.</p>
+        <article class="card artwork">
+          <div class="artwork-frame small">
+            <img src="/images/placeholder-art-2.jpg" alt="Artwork 2" class="artwork-img" />
+          </div>
+          <h3>Curated Shop Demo</h3>
+          <p class="muted">Product presentation with framed imagery and a restrained checkout flow.</p>
+          <div class="card-cta">From <strong>$500</strong></div>
         </article>
 
-        <article class="card">
-          <h3>Informational site</h3>
-          <p class="muted">A clean multi-page site for clubs, teams, and student organizations.</p>
+        <article class="card artwork">
+          <div class="artwork-frame small">
+            <img src="/images/placeholder-art-3.jpg" alt="Artwork 3" class="artwork-img" />
+          </div>
+          <h3>Fine‑Art Landing</h3>
+          <p class="muted">A refined landing layout for artists, galleries, and bespoke projects.</p>
+          <div class="card-cta">From <strong>$500</strong></div>
         </article>
       </div>
     </section>
 
     <section id="about" class="container section">
       <h2>About</h2>
-      <p>I’m a high school junior building sites for students and local projects. My dad is teaching me vibe code — I like to keep designs simple and fast.</p>
+      <p>I craft thoughtful, performance-first sites for discerning clients. My aesthetics lean into gallery spacing, tactile typography, and a muted gold accent palette to elevate content.</p>
     </section>
 
     <section id="contact" class="container section">
       <h2>Contact</h2>
-      <p>Interested? Email me at <a href="mailto:london@coburn.org">london@coburn.org</a> or send a message on Instagram.</p>
+      <p>Interested in a commission or a bespoke template? Email me at <a href="mailto:london@coburn.org">london@coburn.org</a>.</p>
     </section>
   </main>
 
