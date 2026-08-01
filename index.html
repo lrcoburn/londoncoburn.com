@@ -24,7 +24,7 @@
       <div class="container hero-grid">
         <div class="hero-copy">
           <h1 class="display">A curated web presence with a gallery sensibility</h1>
-          <p class="lead">I design refined, fast websites inspired by fine‑art galleries and equestrian portraiture — warm obsidian backgrounds, hand‑set serif headings, and muted antique go[...]
+          <p class="lead">I design refined, fast websites inspired by fine‑art galleries and equestrian portraiture — warm obsidian backgrounds, hand‑set serif headings, and muted antique go[...]</p>
           <div class="actions">
             <a class="btn-primary" href="#projects">View the collection</a>
             <a class="btn-ghost" href="#contact">Commission a site</a>
@@ -35,7 +35,7 @@
         <aside class="hero-artwork" aria-labelledby="featured-artwork">
           <div class="artwork-card">
             <div class="artwork-frame">
-              <img src="/images/art-gallery-portfolio.png" alt="Framed gallery artwork" class="artwork-img" />
+              <img src="/images/art-gallery-portfolio.png" alt="Framed gallery artwork" class="artwork-img" data-full="/images/art-gallery-portfolio.png" tabindex="0" />
             </div>
             <div class="artwork-meta">
               <div class="artwork-title">Equine Portrait — Limited Edition</div>
@@ -53,7 +53,7 @@
       <div class="cards gallery">
         <article class="card artwork">
           <div class="artwork-frame small">
-            <img src="/images/academic-portfolio.png" alt="Artwork 1" class="artwork-img artwork-img--focus-top" loading="lazy" />
+            <img src="/images/academic-portfolio.png" alt="Academic overview screenshot" class="artwork-img artwork-img--focus-top" data-full="/images/academic-portfolio.png" loading="lazy" tabindex="0" />
           </div>
           <h3>Portfolio Gallery Template</h3>
           <p class="muted">A single-page showcase inspired by museum layouts — clean hierarchy and tactile type.</p>
@@ -62,7 +62,7 @@
 
         <article class="card artwork">
           <div class="artwork-frame small">
-            <img src="/images/curated-portfolio.png" alt="Artwork 2" class="artwork-img" />
+            <img src="/images/curated-portfolio.png" alt="Curated shop screenshot" class="artwork-img" data-full="/images/curated-portfolio.png" loading="lazy" tabindex="0" />
           </div>
           <h3>Curated Shop Demo</h3>
           <p class="muted">Product presentation with framed imagery and a restrained checkout flow.</p>
@@ -71,7 +71,7 @@
 
         <article class="card artwork">
           <div class="artwork-frame small">
-            <img src="/images/fine-art-gallery-portfolio.png" alt="Artwork 3" class="artwork-img" />
+            <img src="/images/fine-art-gallery-portfolio.png" alt="Fine-art landing screenshot" class="artwork-img" data-full="/images/fine-art-gallery-portfolio.png" loading="lazy" tabindex="0" />
           </div>
           <h3>Fine‑Art Landing</h3>
           <p class="muted">A refined landing layout for artists, galleries, and bespoke projects.</p>
@@ -97,8 +97,115 @@
     </div>
   </footer>
 
+  <!-- Lightbox modal with navigation -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Image viewer">
+    <div class="lightbox__overlay"></div>
+    <div class="lightbox__inner" role="document">
+      <button class="lightbox__close" aria-label="Close image viewer">×</button>
+      <button class="lightbox__prev" aria-label="Previous image">‹</button>
+      <button class="lightbox__next" aria-label="Next image">›</button>
+      <div class="lightbox__stage">
+        <img class="lightbox__img" src="" alt="" />
+      </div>
+      <div class="lightbox__caption" aria-live="polite"></div>
+    </div>
+  </div>
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    (function(){
+      const lightbox = document.getElementById('lightbox');
+      const stageImg = lightbox.querySelector('.lightbox__img');
+      const caption = lightbox.querySelector('.lightbox__caption');
+      const closeBtn = lightbox.querySelector('.lightbox__close');
+      const prevBtn = lightbox.querySelector('.lightbox__prev');
+      const nextBtn = lightbox.querySelector('.lightbox__next');
+      const overlay = lightbox.querySelector('.lightbox__overlay');
+
+      // Build gallery from DOM order
+      const thumbs = Array.from(document.querySelectorAll('.artwork-frame img'));
+      const gallery = thumbs.map(img => ({ src: img.dataset.full || img.src, alt: img.alt || '' }));
+
+      let current = -1;
+      let lastFocused = null;
+
+      function preloadIndex(i){
+        if (i < 0 || i >= gallery.length) return;
+        const img = new Image(); img.src = gallery[i].src;
+      }
+
+      function open(index){
+        if (index < 0 || index >= gallery.length) return;
+        current = index;
+        lastFocused = document.activeElement;
+        const item = gallery[current];
+        stageImg.src = '';
+        caption.textContent = '';
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+
+        // set image then caption when loaded
+        const full = new Image();
+        full.onload = () => { stageImg.src = full.src; stageImg.alt = item.alt; caption.textContent = item.alt; };
+        full.src = item.src;
+
+        // preload neighbors
+        preloadIndex(current - 1);
+        preloadIndex(current + 1);
+
+        // focus controls
+        closeBtn.focus();
+      }
+
+      function close(){
+        lightbox.classList.remove('open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        stageImg.src = '';
+        caption.textContent = '';
+        document.body.style.overflow = '';
+        if (lastFocused && lastFocused.focus) lastFocused.focus();
+        current = -1;
+      }
+
+      function showPrev(){ open((current - 1 + gallery.length) % gallery.length); }
+      function showNext(){ open((current + 1) % gallery.length); }
+
+      // attach handlers to thumbnails
+      thumbs.forEach((img, i) => {
+        img.style.cursor = 'zoom-in';
+        if (!img.hasAttribute('tabindex')) img.setAttribute('tabindex','0');
+        img.addEventListener('click', () => open(i));
+        img.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(i); } });
+      });
+
+      // controls
+      closeBtn.addEventListener('click', close);
+      prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
+      nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
+      overlay.addEventListener('click', close);
+
+      // keyboard nav and focus trap
+      document.addEventListener('keydown', (e) => {
+        if (lightbox.classList.contains('open')){
+          if (e.key === 'Escape') { e.preventDefault(); close(); }
+          else if (e.key === 'ArrowLeft') { e.preventDefault(); showPrev(); }
+          else if (e.key === 'ArrowRight') { e.preventDefault(); showNext(); }
+          else if (e.key === 'Tab') {
+            // basic focus trap
+            const focusables = Array.from(lightbox.querySelectorAll('button,a,input,textarea,select,[tabindex]:not([tabindex="-1"])')).filter(n => !n.hasAttribute('disabled'));
+            if (focusables.length === 0) return;
+            const idx = focusables.indexOf(document.activeElement);
+            if (e.shiftKey && idx === 0) { focusables[focusables.length-1].focus(); e.preventDefault(); }
+            else if (!e.shiftKey && idx === focusables.length-1) { focusables[0].focus(); e.preventDefault(); }
+          }
+        }
+      });
+
+      // expose API if needed
+      window.__galleryOpen = open;
+    })();
   </script>
 </body>
 </html>
