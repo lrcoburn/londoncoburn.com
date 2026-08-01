@@ -1,5 +1,6 @@
-# GitHub Copilot Instructions for londoncoburn.com
+# Instructions for GitHub Copilot Agent
 
+- Refer to `DESIGN.md` in the repository root for all visual design rules, Tailwind classes, and layout structures.
 - Always follow the visual guidelines, typography, and color tokens defined in `DESIGN.md`.
 - Strictly avoid generic tech/SaaS aesthetics (no teal/purple palettes, neon glows, or generic AI rounded cards).
 - Treat all UI elements with a high-end, fine-art gallery and luxury equestrian portraiture aesthetic.
