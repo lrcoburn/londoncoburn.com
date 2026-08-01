@@ -180,6 +180,8 @@ a.btn-ghost:focus {
   border-radius: 4px;
   background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.18));
 }
+/* Anchor academic thumbnail crop to top */
+.artwork-img--focus-top { object-position: top center; }
 
 /* artwork meta */
 .artwork-meta {
