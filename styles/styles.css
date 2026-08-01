@@ -164,11 +164,13 @@ a.btn-ghost:focus {
   border: 4px solid rgba(32,30,28,0.6);
   overflow: hidden;
   display: block;
+  /* Use a consistent frame aspect ratio so images are "bound" to the box */
+  aspect-ratio: 16 / 10;
 }
-.artwork-frame.small { padding: 0.35rem; border-width: 3px; }
+.artwork-frame.small { padding: 0.35rem; border-width: 3px; aspect-ratio: 4 / 3; }
 .artwork-img {
   width: 100%;
-  height: 280px;
+  height: 100%;
   object-fit: cover;
   display: block;
   border-radius: 4px;
@@ -246,6 +248,7 @@ a:focus, button:focus {
 /* Responsive */
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; gap: 1.25rem; }
-  .artwork-img { height: 220px; }
+  .artwork-frame { aspect-ratio: 3 / 2; }
+  .artwork-frame.small { aspect-ratio: 4 / 3; }
   .hero { padding-top: 2rem; padding-bottom: 2rem; }
 }
