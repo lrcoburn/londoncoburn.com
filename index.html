@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>London Coburn — Web Design</title>
+  <meta name="description" content="London Coburn — student web developer building simple, fast websites for students and small projects." />
+  <link rel="stylesheet" href="/styles/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-row">
+      <div class="brand">London Coburn</div>
+      <nav class="nav">
+        <a href="#projects">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <h1>Hi — I’m London.</h1>
+          <p class="lead">I build fast, friendly websites for students and small local projects. I focus on clarity, accessibility, and performance.</p>
+          <div class="actions">
+            <a class="btn-primary" href="#projects">See my work</a>
+            <a class="btn-ghost" href="#contact">Get a quote</a>
+          </div>
+          <p class="muted">Student-friendly packages: Landing page · Portfolio · Small e-commerce demo</p>
+        </div>
+
+        <div class="hero-card" aria-hidden="true">
+          <div class="mock">
+            <div class="mock-figure">E‑commerce demo</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="container section">
+      <h2>Projects</h2>
+      <p class="muted">Examples and case studies coming soon. For now, here are a few demo screenshots and short descriptions.</p>
+
+      <div class="cards">
+        <article class="card">
+          <h3>College portfolio template</h3>
+          <p class="muted">A one-page portfolio template for college applications — photo, achievements, and contact.</p>
+        </article>
+
+        <article class="card">
+          <h3>Small shop demo</h3>
+          <p class="muted">Product pages + simple checkout demo to show e-commerce capability.</p>
+        </article>
+
+        <article class="card">
+          <h3>Informational site</h3>
+          <p class="muted">A clean multi-page site for clubs, teams, and student organizations.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="container section">
+      <h2>About</h2>
+      <p>I’m a high school junior building sites for students and local projects. My dad is teaching me vibe code — I like to keep designs simple and fast.</p>
+    </section>
+
+    <section id="contact" class="container section">
+      <h2>Contact</h2>
+      <p>Interested? Email me at <a href="mailto:you@example.com">you@example.com</a> or send a message on Instagram.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© <span id="year"></span> London Coburn — Built with simple HTML & CSS</small>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
