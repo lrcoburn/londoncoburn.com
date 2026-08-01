@@ -166,12 +166,16 @@ a.btn-ghost:focus {
   display: block;
   /* Use a consistent frame aspect ratio so images are "bound" to the box */
   aspect-ratio: 16 / 10;
+  position: relative; /* ensure absolutely-positioned image can fill the inner area */
 }
 .artwork-frame.small { padding: 0.35rem; border-width: 3px; aspect-ratio: 4 / 3; }
 .artwork-img {
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
   border-radius: 4px;
   background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.18));
