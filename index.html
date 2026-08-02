@@ -27,7 +27,7 @@
   <section id="hero" class="container section hero">
     <div class="hero-grid">
       <div class="hero-copy">
-        <h1>Bespoke Web Design for Students & Organizations</h1>
+        <h1>Affordable Web Design for Small Organizations and Students.</h1>
         <p class="lead">We craft clean, fast, and affordable websites that communicate clearly and feel intentional.</p>
         <div class="actions">
           <a class="btn-primary" href="#contact">Start Your Project</a>
@@ -38,7 +38,7 @@
       <div class="hero-artwork">
         <div class="artwork-card">
           <div class="artwork-frame">
-            <img src="/images/hero-showcase.png" alt="Portfolio showcase" class="artwork-img" />
+            <img src="/images/art-gallery-portfolio.png" alt="Portfolio showcase" class="artwork-img" />
           </div>
         </div>
       </div>
@@ -52,32 +52,32 @@
       <div class="card artwork">
         <div class="artwork-card">
           <div class="artwork-frame small">
-            <img src="/images/project-1.png" alt="Student portfolio site" class="artwork-img" />
+            <img src="/images/academic-portfolio.png" alt="Student portfolio site" class="artwork-img"
+                 data-lightbox data-src="/images/academic-portfolio.png" data-caption="Student Portfolio" />
           </div>
         </div>
         <h3>Student Portfolio</h3>
         <p>Responsive portfolio for college applications, featuring clean typography and mobile-first design.</p>
-        <div class="card-cta">View Project →</div>
       </div>
       <div class="card artwork">
         <div class="artwork-card">
           <div class="artwork-frame small">
-            <img src="/images/project-2.png" alt="Organization site" class="artwork-img" />
+            <img src="/images/curated-portfolio.png" alt="Organization site" class="artwork-img"
+                 data-lightbox data-src="/images/curated-portfolio.png" data-caption="Organization Website" />
           </div>
         </div>
         <h3>Organization Website</h3>
-        <p>Institutional site for a local nonprofit, emphasizing mission clarity and donor engagement.</p>
-        <div class="card-cta">View Project →</div>
+        <p>Curated e-commerce store for local business, emphasizing simplicity.</p>
       </div>
       <div class="card artwork">
         <div class="artwork-card">
           <div class="artwork-frame small">
-            <img src="/images/project-3.png" alt="Artist gallery" class="artwork-img" />
+            <img src="/images/art-gallery-portfolio.png" alt="Artist gallery" class="artwork-img"
+                 data-lightbox data-src="/images/art-gallery-portfolio.png" data-caption="Artist Gallery" />
           </div>
         </div>
         <h3>Artist Gallery</h3>
         <p>Photography portfolio with gallery grid, lightbox viewer, and artist bio. Built for creatives.</p>
-        <div class="card-cta">View Project →</div>
       </div>
     </div>
   </section>
@@ -129,7 +129,7 @@
     <h2>Get in Touch</h2>
     <p>Ready to start your project? Reach out for a free consultation.</p>
     <div class="actions">
-      <a class="btn-primary" href="mailto:hello@coburn.studio">Email Us</a>
+      <a class="btn-primary" href="mailto:london@coburn.org">Email Us</a>
       <a class="btn-ghost" href="#">Schedule a Call</a>
     </div>
   </section>
@@ -140,6 +140,20 @@
       <small>&copy; 2024 Coburn Studio. All rights reserved.</small>
     </div>
   </footer>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image lightbox" aria-hidden="true">
+    <div id="lightbox-overlay" class="lightbox__overlay"></div>
+    <div class="lightbox__inner">
+      <button id="lightbox-close" class="lightbox__close" aria-label="Close lightbox">&#x2715;</button>
+      <button id="lightbox-prev" class="lightbox__prev" aria-label="Previous image">&#8249;</button>
+      <button id="lightbox-next" class="lightbox__next" aria-label="Next image">&#8250;</button>
+      <div class="lightbox__stage">
+        <img id="lightbox-img" class="lightbox__img" src="" alt="" />
+      </div>
+      <p id="lightbox-caption" class="lightbox__caption"></p>
+    </div>
+  </div>
 
   <script src="js/script.js"></script>
 </body>
